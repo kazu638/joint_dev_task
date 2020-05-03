@@ -94,18 +94,10 @@ def q11
   sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]]
 
   # 以下に回答を記載
+  sports = sports.flatten.uniq
   puts "ユーザーの趣味一覧"
   sports.each.with_index(1) do |sport, index|
-    if sport.instance_of?(Array)
-      if sport.count >= 3
-        puts "No#{index} #{sport[0]}"
-        puts "No#{index+1} #{sport.last}"
-      else sport.count
-        puts "No#{index} #{sport[0]}"
-      end
-    else
-      puts "No#{index} #{sport}"
-    end
+    puts "No#{index} #{sport}"
   end
 end
 
