@@ -142,16 +142,18 @@ end
 
 class UserQ17
   # 以下に回答を記載
-  def initialize(name:, age:, gender:)
-    @name = name
-    @age = age
-    @gender = gender
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]
+    @gender = params[:gender]
   end
 
   def info
-    puts "名前：#{@name}"
-    puts "年齢：#{@age}"
-    puts "性別：#{@gender}"
+    puts <<~EOS
+    名前：#{@name}
+    年齢：#{@age}
+    性別：#{@gender}
+    EOS
   end
 end
 
@@ -174,9 +176,9 @@ class UserQ18
 
   def introduce
     case @age
-    when 32
+    when 20 .. 100
       "こんにちは、#{@name}と申します。宜しくお願いいたします。"
-    when 10
+    when 0 .. 19
       "はいさいまいど～、#{@name}です！！！"
     end
   end
@@ -212,7 +214,7 @@ end
 
 class Zoo
   # 以下に回答を記載
-
+  
 end
 
 
