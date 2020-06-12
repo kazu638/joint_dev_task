@@ -142,7 +142,17 @@ end
 
 class UserQ17
   # 以下に回答を記載
+  def initialize(name:, age:, gender:)
+    @name = name
+    @age = age
+    @gender = gender
+  end
 
+  def info
+    puts "名前：#{@name}"
+    puts "年齢：#{@age}"
+    puts "性別：#{@gender}"
+  end
 end
 
 def q17
@@ -157,7 +167,19 @@ end
 
 class UserQ18
   # 以下に回答を記載
+  def initialize(name:, age:)
+    @name = name
+    @age = age
+  end
 
+  def introduce
+    case @age
+    when 32
+      "こんにちは、#{@name}と申します。宜しくお願いいたします。"
+    when 10
+      "はいさいまいど～、#{@name}です！！！"
+    end
+  end
 end
 
 def q18
@@ -171,8 +193,8 @@ end
 
 class Item
   # 以下を修正して下さい
-
-  def initialize(name)
+  attr_reader :name
+  def initialize(name:)
     @name = name
   end
 end
