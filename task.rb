@@ -220,25 +220,34 @@ class Zoo
   # 以下に回答を記載
   def initialize(**params)
     @name = params[:name]
-    @infant = params[:entry_fee][:infant]
-    @children = params[:entry_fee][:children]
-    @adult = params[:entry_fee][:adult]
-    @senior = params[:entry_fee][:senior]
+    @entry_fee = params[:entry_fee]
   end
 
   def info_entry_fee(user)
-    text = "#{user.name}さんの入場料金は  円です。"
-    position = (/  円/ =~ text).to_i + 1
-    case user.age
-    when 0 .. 5
-      p text.insert(position, @infant.to_s)
-    when 6 .. 12
-      p text.insert(position, @children.to_s)
-    when 13 .. 64
-      p text.insert(position, @adult.to_s)
-    when 65 .. 120
-      p text.insert(position, @senior.to_s)
-    end
+    entry_fee = case user.age
+                when 0 .. 5
+                  @entry_fee[:infant]
+                when 6 .. 12
+                  @entry_fee[:children]
+                when 13 .. 64
+                  @entry_fee[:adult]
+                when 65 .. 120
+                  @entry_fee[:senior]
+                end
+    puts "#{user.name}さんの入場料金は #{entry_fee} 円です。"
+    # text = "#{user.name}さんの入場料金は  円です。"
+    # position = (/  円/ =~ text).to_i + 1
+    # entry_fee = case user.age
+    #             when 0 .. 5
+    #               @entry_fee[:infant]
+    #             when 6 .. 12
+    #               @entry_fee[:children]
+    #             when 13 .. 64
+    #               @entry_fee[:adult]
+    #             when 65 .. 120
+    #               @entry_fee[:senior]
+    #             end
+    # puts text.insert(position, entry_fee.to_s)
   end
 end
 
